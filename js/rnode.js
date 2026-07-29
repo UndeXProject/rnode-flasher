@@ -782,6 +782,11 @@ class ROM {
     static PRODUCT_RAK4631 = 0x10
     static MODEL_11       = 0x11
     static MODEL_12       = 0x12
+    static MODEL_13       = 0x13
+    static MODEL_14       = 0x14
+
+    static PRODUCT_OPENCOM_XL = 0x20
+    static MODEL_21           = 0x21
 
     static PRODUCT_RNODE  = 0x03
     static MODEL_A1       = 0xA1
@@ -818,12 +823,13 @@ class ROM {
     static MODEL_C5       = 0xC5
     static MODEL_CA       = 0xCA
 
-    static PRODUCT_H32_V4 = 0xC3
+    static PRODUCT_H_W_PAPER = 0xC3
     static MODEL_C8       = 0xC8
 
     static PRODUCT_HELTEC_T114 = 0xC2
     static MODEL_C6       = 0xC6
     static MODEL_C7       = 0xC7
+    static MODEL_CB       = 0xCB
 
     static PRODUCT_TBEAM  = 0xE0
     static MODEL_E4       = 0xE4
@@ -834,6 +840,10 @@ class ROM {
     static PRODUCT_TBEAM_S_V1 = 0xEA;
     static MODEL_DB           = 0xDB
     static MODEL_DC           = 0xDC
+
+    static PRODUCT_XIAO_S3 = 0xEB
+    static MODEL_DE        = 0xDE
+    static MODEL_DD        = 0xDD
 
     static PRODUCT_TDECK  = 0xD0;
     static MODEL_D4       = 0xD4;

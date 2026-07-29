@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <title>RNode Flasher</title>
+    <title>RNode CE Flasher</title>
 
     <script src="./js/rnode.js"></script>
+    <script src="./js/firmware_catalog.js"></script>
     <script src="./js/nrf52_dfu_flasher.js"></script>
     <script src="./js/zip.min.js"></script>
 
@@ -32,8 +33,11 @@
             <img src="reticulum_logo_512.png" class="w-14 h-14"/>
         </div>
         <div class="my-auto">
-            <div class="font-bold">RNode Flasher</div>
-            <div class="text-sm">Developed by <a target="_blank" href="https://liamcottle.com" class="text-blue-500 hover:underline">Liam Cottle</a></div>
+            <div class="font-bold">RNode CE Flasher</div>
+            <div class="text-sm">
+                CE edition by <a target="_blank" href="https://github.com/UndeXProject" class="text-blue-500 hover:underline">UndeXProject</a>,
+                based on Liam Cottle's flasher
+            </div>
         </div>
     </div>
 
@@ -73,7 +77,7 @@
         <div class="border-t px-2 py-1">
             <div class="text-sm space-x-1">
                 <span>Can't find your device? Open an issue on</span>
-                <a target="_blank" href="https://github.com/liamcottle/rnode-flasher" class="text-blue-500 hover:underline">GitHub</a>
+                <a target="_blank" href="https://github.com/UndeXProject/rnode-flasher/issues" class="text-blue-500 hover:underline">GitHub</a>
             </div>
         </div>
 
@@ -110,14 +114,16 @@
         <div class="border-t px-2 py-1 text-sm">
             <div>
                 <span>Download Firmware</span>
-                <span v-if="selectedProduct && selectedModel && recommendedFirmwareFilename">: <a target="_blank" :href="`https://github.com/markqvist/RNode_Firmware/releases/latest/download/${recommendedFirmwareFilename}`" class="text-blue-500 hover:underline">{{ recommendedFirmwareFilename }}</a></span>
+                <span v-if="selectedProduct && selectedModel && recommendedFirmwareFilename">:
+                    <a target="_blank" :href="recommendedFirmwareUrl" class="text-blue-500 hover:underline">{{ recommendedFirmwareFilename }}</a>
+                </span>
             </div>
             <div class="space-x-1">
-                <a target="_blank" href="https://github.com/markqvist/RNode_Firmware/releases" class="text-blue-500 hover:underline">Official Firmware</a>
+                <a target="_blank" href="https://github.com/UndeXProject/RNode_Firmware_CE/releases/tag/nightly" class="text-blue-500 hover:underline">UndeXProject Nightly Firmware</a>
                 <span>•</span>
-                <a target="_blank" href="https://github.com/liberatedsystems/RNode_Firmware_CE/releases" class="text-blue-500 hover:underline">CE Firmware</a>
+                <a target="_blank" href="https://github.com/UndeXProject/RNode_Firmware_CE" class="text-blue-500 hover:underline">Firmware Source</a>
                 <span>•</span>
-                <a target="_blank" href="https://github.com/attermann/microReticulum_Firmware/releases" class="text-blue-500 hover:underline">Transport Node Firmware</a>
+                <a target="_blank" href="https://github.com/UndeXProject/rnode-flasher" class="text-blue-500 hover:underline">Flasher Source</a>
             </div>
         </div>
 
@@ -388,7 +394,8 @@
 
                 selectedProduct: null,
                 selectedModel: null,
-                products: [
+                products: window.CE_PRODUCTS,
+                legacyProducts: [
                     {
                         name: "Heltec LoRa32 v2",
                         id: ROM.PRODUCT_H32_V2,
@@ -1853,6 +1860,12 @@
         computed: {
             recommendedFirmwareFilename() {
                 return this.selectedModel?.firmware_filename ?? this.selectedProduct?.firmware_filename;
+            },
+            recommendedFirmwareUrl() {
+                if(!this.recommendedFirmwareFilename){
+                    return null;
+                }
+                return window.CE_FIRMWARE_RELEASE_BASE + this.recommendedFirmwareFilename;
             },
         },
         watch: {
