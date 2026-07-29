@@ -1,6 +1,14 @@
-# RNode Flasher
+# RNode CE Flasher
 
-A _work-in-progress_ web based firmware flasher for [Reticulum](https://github.com/markqvist/Reticulum) / [RNode_Firmware](https://github.com/markqvist/RNode_Firmware).
+A web-based firmware flasher adapted for
+[UndeXProject/RNode_Firmware_CE](https://github.com/UndeXProject/RNode_Firmware_CE).
+
+Open it in a Chromium-based browser:
+
+**https://undexproject.github.io/rnode-flasher/**
+
+The device catalogue and download links track the rolling
+[UndeXProject Nightly release](https://github.com/UndeXProject/RNode_Firmware_CE/releases/tag/nightly).
 
 - It is written in javascript and uses the [Web Serial APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Serial_API).
 - It supports putting relevant devices into DFU mode.
@@ -26,7 +34,7 @@ There was an existing package called [pc-nrf-dfu-js](https://github.com/NordicSe
 
 ## How to use it?
 
-- Open https://liamcottle.github.io/rnode-flasher/ in your web browser.
+- Open https://undexproject.github.io/rnode-flasher/ in your web browser.
 - Select your device.
 - Put your device into DFU mode (for nRF52 boards)
 - Select a firmware file and click flash.
